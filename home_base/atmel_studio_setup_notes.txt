@@ -1,0 +1,15 @@
+Use WinAVR compiler
+    Add "Flavour" of toolchain for Atmel AVR 8-bit (C-Language) to add WinAVR
+        Tools -> Options -> Toolchain -> Add WinAVR path
+    Right click project -> Properties -> Advanced -> Change Toolchain Flavour to newly added WinAVR
+
+Setup macros
+    Right click project -> Properties -> Toolchain -> AVR/GNU C Compiler -> Symbols
+        F_CPU=3686400UL
+        BAUD=115200UL
+        DEBUG=1 (for debugging with debugwire)
+
+
+if stuck in debugwire mode:
+    Tools -> Command Line
+    atprogram -i debugwire -d atmega328p dwdisable
