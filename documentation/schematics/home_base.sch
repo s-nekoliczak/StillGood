@@ -1,0 +1,181 @@
+EESchema Schematic File Version 4
+LIBS:home_base-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Home Base for StillGood"
+Date "2019-04-12"
+Rev "1"
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L BluetoothmateSilver:BluetoothMateSilver U?
+U 1 1 5CB16467
+P 5400 4400
+F 0 "U?" H 5777 4451 50  0000 L CNN
+F 1 "BluetoothMateSilver" H 5777 4360 50  0000 L CNN
+F 2 "" H 5100 4750 50  0001 C CNN
+F 3 "" H 5100 4750 50  0001 C CNN
+	1    5400 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L MCU_Microchip_ATmega:ATmega328P-PU U?
+U 1 1 5CB16916
+P 2350 3750
+F 0 "U?" H 1709 3796 50  0000 R CNN
+F 1 "ATmega328P-PU" H 1709 3705 50  0000 R CNN
+F 2 "Package_DIP:DIP-28_W7.62mm" H 2350 3750 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20with%20picoPower%20Technology%20Data%20Sheet%2040001984A.pdf" H 2350 3750 50  0001 C CNN
+	1    2350 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5CB16BA5
+P 4900 4800
+F 0 "#PWR?" H 4900 4550 50  0001 C CNN
+F 1 "GND" H 4905 4627 50  0000 C CNN
+F 2 "" H 4900 4800 50  0001 C CNN
+F 3 "" H 4900 4800 50  0001 C CNN
+	1    4900 4800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4950 4450 4700 4450
+Wire Wire Line
+	4700 4450 4700 4800
+Wire Wire Line
+	4950 4650 4900 4650
+Wire Wire Line
+	4900 4650 4900 4800
+$Comp
+L power:VCC #PWR?
+U 1 1 5CB16D39
+P 2850 1350
+F 0 "#PWR?" H 2850 1200 50  0001 C CNN
+F 1 "VCC" H 2868 1523 50  0000 C CNN
+F 2 "" H 2850 1350 50  0001 C CNN
+F 3 "" H 2850 1350 50  0001 C CNN
+	1    2850 1350
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:VCC #PWR?
+U 1 1 5CB16E18
+P 2350 2000
+F 0 "#PWR?" H 2350 1850 50  0001 C CNN
+F 1 "VCC" H 2367 2173 50  0000 C CNN
+F 2 "" H 2350 2000 50  0001 C CNN
+F 3 "" H 2350 2000 50  0001 C CNN
+	1    2350 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5CB16E5E
+P 2350 5450
+F 0 "#PWR?" H 2350 5200 50  0001 C CNN
+F 1 "GND" H 2355 5277 50  0000 C CNN
+F 2 "" H 2350 5450 50  0001 C CNN
+F 3 "" H 2350 5450 50  0001 C CNN
+	1    2350 5450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2350 2250 2350 2000
+Wire Wire Line
+	2350 5250 2350 5450
+$Comp
+L Memory_EEPROM:25LCxxx U?
+U 1 1 5CB1717D
+P 3600 1300
+F 0 "U?" H 3600 1778 50  0000 C CNN
+F 1 "25LCxxx" H 3600 1687 50  0000 C CNN
+F 2 "" H 3600 1300 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21832H.pdf" H 3600 1300 50  0001 C CNN
+	1    3600 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4950 4250 4150 4250
+Wire Wire Line
+	4150 4250 4150 4450
+Wire Wire Line
+	4150 4450 3150 4450
+Wire Wire Line
+	3150 4450 3150 4350
+Wire Wire Line
+	3150 4350 2950 4350
+Wire Wire Line
+	4950 4350 3900 4350
+Wire Wire Line
+	3900 4350 3900 4250
+Wire Wire Line
+	3900 4250 2950 4250
+Wire Wire Line
+	2950 2950 4300 2950
+Wire Wire Line
+	4300 2950 4300 1400
+Wire Wire Line
+	4300 1400 4000 1400
+Wire Wire Line
+	2950 2850 4200 2850
+Wire Wire Line
+	4200 2850 4200 1300
+Wire Wire Line
+	4200 1300 4000 1300
+Wire Wire Line
+	2950 3050 4400 3050
+Wire Wire Line
+	4400 3050 4400 1200
+Wire Wire Line
+	4400 1200 4000 1200
+Wire Wire Line
+	2950 2750 3100 2750
+Wire Wire Line
+	3100 2750 3100 1400
+Wire Wire Line
+	3100 1400 3200 1400
+Wire Wire Line
+	3200 1300 2850 1300
+Wire Wire Line
+	2850 1300 2850 1350
+Wire Wire Line
+	3200 1200 2850 1200
+Wire Wire Line
+	2850 1200 2850 1300
+Connection ~ 2850 1300
+$Comp
+L power:GND #PWR?
+U 1 1 5CB282B0
+P 3600 1750
+F 0 "#PWR?" H 3600 1500 50  0001 C CNN
+F 1 "GND" H 3605 1577 50  0000 C CNN
+F 2 "" H 3600 1750 50  0001 C CNN
+F 3 "" H 3600 1750 50  0001 C CNN
+	1    3600 1750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 1600 3600 1750
+$Comp
+L power:VCC #PWR?
+U 1 1 5CB28CEE
+P 3600 700
+F 0 "#PWR?" H 3600 550 50  0001 C CNN
+F 1 "VCC" H 3617 873 50  0000 C CNN
+F 2 "" H 3600 700 50  0001 C CNN
+F 3 "" H 3600 700 50  0001 C CNN
+	1    3600 700 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3600 1000 3600 700 
+$EndSCHEMATC
