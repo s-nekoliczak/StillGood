@@ -3,8 +3,6 @@ site_name: StillGood
 nav:
     - Home: index.md
     - About: about.md
-    - NFC: nfc.md
     - UART: uart.md
     - RTC: rtc.md
-    - NHD LCD: nhd_lcd.md
 theme: readthedocs
