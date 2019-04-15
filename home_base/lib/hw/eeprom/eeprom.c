@@ -7,11 +7,48 @@
 
 #include "../../mcu/spi/spi.h"
 #include "../../mcu/spi/spi_macros.h"
-#include "eeprom_macros.h"
+#include "../../hw/eeprom/eeprom_macros.h"
+
+void eeprom_init() {
+
+    EEPROM_DDR |= (1 << EEPROM_SS);
+
+    // Pull SS high to avoid accidental communication with slave.
+    EEPROM_PORT |= (1 << EEPROM_SS);
+
+}
+
+void eeprom_enable_write() {
+
+    EEPROM_SS_SELECT;
+    
+    spi_send(EEPROM_CMD_WRSR);
+    spi_send(EEPROM_ENABLE_WRITE);
+
+    EEPROM_SS_DESELECT;
+
+}
+
+char eeprom_read_status() {
+
+    char c = 0xFF;
+
+    EEPROM_SS_SELECT;
+    
+    spi_send(EEPROM_CMD_RDSR);
+    spi_send(0);
+    c = spi_receive();
+
+    EEPROM_SS_DESELECT;
+
+    return c;
+
+}
+
 
 void eeprom_read_bytes(uint16_t addr, char * str, uint16_t len) {
 
-    SPI_SS_SELECT;
+    EEPROM_SS_SELECT;
 
     memset(str, 0, strlen(str));
 
@@ -24,7 +61,7 @@ void eeprom_read_bytes(uint16_t addr, char * str, uint16_t len) {
         str[i] = spi_receive();
     }
 
-    SPI_SS_DESELECT;
+    EEPROM_SS_DESELECT;
 }
 
 /*
@@ -37,12 +74,12 @@ void eeprom_write_page(uint16_t addr, char * str, uint16_t len) {
 
     _delay_ms(1);
 
-    SPI_SS_SELECT;
+    EEPROM_SS_SELECT;
 
     spi_send(EEPROM_CMD_WREN);
 
-    SPI_SS_DESELECT;
-    SPI_SS_SELECT;
+    EEPROM_SS_DESELECT;
+    EEPROM_SS_SELECT;
 
     spi_send(EEPROM_CMD_WRITE);
     spi_send(0xFF & (addr>>8));
@@ -52,7 +89,7 @@ void eeprom_write_page(uint16_t addr, char * str, uint16_t len) {
         spi_send(str[i]);
     }
 
-    SPI_SS_DESELECT;
+    EEPROM_SS_DESELECT;
 
     _delay_ms(1);
 }

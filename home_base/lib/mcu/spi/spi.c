@@ -3,12 +3,9 @@
 #include <avr/io.h>
 #include "spi_macros.h"
 
-void init_spi() {
+void spi_init() {
 
-    SPI_DDR = (1 << SPI_SS) | (1 << SPI_MOSI) | (1 << SPI_SCK);
-
-    // Pull SS high to avoid accidental communication with slave.
-    SPI_PORT |= (1 << SPI_SS);
+    SPI_DDR |= (1 << SPI_MOSI) | (1 << SPI_SCK);
 
     SPCR =
             (1 << SPE)      // Enable SPI

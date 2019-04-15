@@ -1,11 +1,9 @@
 
+void eeprom_init();
 
-void init_spi();
+void eeprom_enable_write();
 
-char spi_receive();
-
-// Call spi_send(0) if waiting for a response
-void spi_send(char byte);
+char eeprom_read_status();
 
 void eeprom_read_bytes(uint16_t addr, char * str, uint16_t len);
 

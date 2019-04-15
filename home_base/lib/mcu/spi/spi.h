@@ -1,5 +1,5 @@
 
-void init_spi();
+void spi_init();
 
 char spi_receive();
 

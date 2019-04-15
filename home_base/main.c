@@ -15,9 +15,6 @@
 #include "./lib/hw/rtc/rtc.h"
 
 
-
-
-
 #include <util/delay.h>
 
 
@@ -44,36 +41,16 @@ int main() {
     // 1/0x1 per the datasheet for 3.6864MHz/115200 baud
     //
     init_uart(0x1, 10);
-    // init_spi();
-    // i2c_init();
+    // Need to call eeprom_init() and epr_init() before spi_init.
+    eeprom_init();
+    spi_init();
+    i2c_init();
+
     _delay_ms(500);
 
-    uint8_t errs = 0;
-    uint8_t r = 0;
-
-    r = bt_cmd_act_start_cmd();
-    if (r == 0) {
-        ++errs;
-    }
-
-    r = bt_cmd_set_mode(0);
-    if (r == 0) {
-        ++errs;
-    }
-    r = bt_cmd_set_device_name("sg_remote");
-    if (r == 0) {
-        ++errs;
-    }
-    r = bt_cmd_set_pin("9876");
-    if (r == 0) {
-        ++errs;
-    }
-
-    r = bt_cmd_act_exit_cmd();
-    if (r == 0) {
-        ++errs;
-    }
-
+    char eeprom_buf[128] = "";
+    eeprom_write_bytes(0x003C, "def", 3);
+    eeprom_read_bytes(0x003C, eeprom_buf, 3);
 
     while(1) {
         _delay_ms(10);
@@ -81,7 +58,6 @@ int main() {
             uint16_t rep_len = uart_rcv_buf_size();
             unsigned char* rep = (unsigned char*)calloc(rep_len, sizeof(unsigned char));
             uart_copy_clear(rep);
-            // uart_clear();
             // if (strcmp(rep, "abc") == 0) {
             if (rep[0] == 'a') {
                 uart_transmit_string((unsigned char*)"got abc\n", 8);
@@ -90,7 +66,6 @@ int main() {
             }
             free(rep);
         }
-        ;
     }
 
 }
